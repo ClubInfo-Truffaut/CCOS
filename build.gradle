@@ -1,6 +1,36 @@
 plugins {
     id 'java'
+    id 'idea'
+
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.10'
+
+    //Versioning
+    id 'org.ajoberstar.reckon' version '0.12.0'
+    //Update deps
+    id 'se.patrikerdes.use-latest-versions' version '0.2.13'
+    id 'com.github.ben-manes.versions' version '0.27.0'
+
+    id "com.github.johnrengelman.shadow" version "5.2.0"
+
 }
+
+javafx {
+    version = "17.0.1"
+    modules = [ 'javafx.controls', 'javafx.fxml' ]
+}
+
+reckon {
+    scopeFromProp()
+    stageFromProp('release', 'beta', 'dev')
+}
+
+idea {
+    module {
+        downloadJavadoc = true
+    }
+}
+
 
 group 'fr.truffaut.'
 version '1.0-SNAPSHOT'
@@ -12,6 +42,18 @@ repositories {
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.2'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.2'
+
+    // https://mvnrepository.com/artifact/org.slf4j/slf4j-api
+    implementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.30'
+    // https://mvnrepository.com/artifact/ch.qos.logback/logback
+    implementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
+
+    implementation group: 'org.jetbrains', name: 'annotations', version: "18.0.0"
+
+    // https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
+    implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.10'
+    // https://mvnrepository.com/artifact/commons-io/commons-io
+    implementation group: 'commons-io', name: 'commons-io', version: '2.6'
 }
 
 test {
