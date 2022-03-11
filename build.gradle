@@ -15,9 +15,14 @@ plugins {
 
 }
 
+application {
+    mainClassName("fr.truffaut.ccos.Main")
+}
+
+
 javafx {
     version = "17.0.1"
-    modules = [ 'javafx.controls', 'javafx.fxml' ]
+    modules = ['javafx.controls', 'javafx.fxml']
 }
 
 reckon {
@@ -40,8 +45,8 @@ repositories {
 }
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.2'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
 
     // https://mvnrepository.com/artifact/org.slf4j/slf4j-api
     implementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.30'
@@ -55,6 +60,16 @@ dependencies {
     // https://mvnrepository.com/artifact/commons-io/commons-io
     implementation group: 'commons-io', name: 'commons-io', version: '2.6'
 }
+
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'fr.truffaut.ccos.Main'
+        )
+    }
+    destinationDirectory.set file('build/libs/')
+}
+
 
 test {
     useJUnitPlatform()
