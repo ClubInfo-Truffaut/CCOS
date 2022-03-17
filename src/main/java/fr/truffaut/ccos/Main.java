@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 
 public class Main extends Application {
+    public static Stage instance;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -12,5 +13,6 @@ public class Main extends Application {
         primaryStage.setWidth(1440);
         primaryStage.setFullScreen(false);
         primaryStage.show();
+        instance = primaryStage;
     }
 }

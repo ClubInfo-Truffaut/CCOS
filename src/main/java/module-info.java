@@ -9,6 +9,10 @@ module CCOS {
 
     requires logback.core;
     requires logback.classic;
+    requires com.google.gson;
+    requires org.slf4j;
+    requires org.jetbrains.annotations;
+    requires lombok;
 
     exports fr.truffaut.ccos;
 }
