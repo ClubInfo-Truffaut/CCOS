@@ -15,14 +15,17 @@ plugins {
 
 }
 
-application {
-    mainClassName("fr.truffaut.ccos.Main")
+repositories {
+    mavenCentral()
 }
 
-
 javafx {
-    version = "17.0.1"
+    version = '17.0.1'
     modules = ['javafx.controls', 'javafx.fxml']
+}
+
+application {
+    mainClassName('fr.truffaut.ccos.Main')
 }
 
 reckon {
@@ -40,9 +43,6 @@ idea {
 group 'fr.truffaut.'
 version '1.0-SNAPSHOT'
 
-repositories {
-    mavenCentral()
-}
 
 dependencies {
     implementation 'org.projectlombok:lombok:1.18.22'

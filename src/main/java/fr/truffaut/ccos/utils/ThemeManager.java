@@ -14,7 +14,7 @@ public class ThemeManager {
     private String getCurrentTheme() {
 
         switch (LocalDate.now().getMonth().toString()) {
-            case "january" -> {
+            case "January" -> {
 
             }
 
