@@ -1,10 +1,13 @@
 package fr.truffaut.ccos.ui.manager;
 
+import com.google.gson.Gson;
+import fr.truffaut.ccos.games.GamesModel;
+import fr.truffaut.ccos.utils.GameConfig;
 import fr.truffaut.ccos.utils.InterpolatorCustom;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
-import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
@@ -13,6 +16,9 @@ import javafx.scene.layout.*;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,8 +27,9 @@ public class GameContainer {
     private ScrollPane scrollPane;
     private Timeline zoomIn;
     private Timeline zoomOut;
+    private final ArrayList<GamesModel> listGames = new ArrayList<>();
 
-    public GameContainer(ScrollPane scrollPane) {
+    public GameContainer(ScrollPane scrollPane) throws IOException {
         this.scrollPane = scrollPane;
         this.init();
     }
@@ -59,19 +66,19 @@ public class GameContainer {
         this.listPane.add(tempPane);
     }
 
-    public void init() {
-        paneCreator();
-        paneCreator();
-        paneCreator();
+    public void init() throws IOException {
+        listGames.add(new Gson().fromJson(Files.readString(Path.of("games.json")), GamesModel.class));
         paneCreator();
         HBox hbox = new HBox();
-        hbox.setPadding(new Insets(50));
+        hbox.setAlignment(Pos.CENTER);
         hbox.setSpacing(50);
-        hbox.setMinWidth(scrollPane.getMinWidth());
-        hbox.setMinHeight(scrollPane.getMinHeight());
+        hbox.setMinWidth(scrollPane.getWidth());
+        hbox.setMinHeight(scrollPane.getHeight());
         hbox.setVisible(true);
         hbox.getChildren().addAll(listPane);
+        scrollPane.getStyleClass().clear();
         scrollPane.setContent(hbox);
+        System.out.println(GameConfig.getProperty("games").get());
     }
 
 }

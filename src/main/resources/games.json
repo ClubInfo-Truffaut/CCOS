@@ -1,0 +1,7 @@
+{
+  "test": "test",
+  "games": {
+    "street": "/img/test.jpg",
+    "othergame": "/img/test.jpg"
+  }
+}
