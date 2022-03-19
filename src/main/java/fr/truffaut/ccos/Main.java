@@ -18,7 +18,7 @@ public class Main extends Application {
         primaryStage.setTitle("Arcade Menu");
         primaryStage.setHeight(900);
         primaryStage.setWidth(1440);
-        primaryStage.setResizable(false);
+        primaryStage.setResizable(true);
         primaryStage.setFullScreen(false);
 
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/main.fxml")));
