@@ -24,8 +24,9 @@
         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
     </rowConstraints>
     <children>
-        <ScrollPane fx:id="gamescrollpane" onKeyPressed="#keypressedgamecontainer" pannable="true" prefHeight="200.0"
-                    prefWidth="200.0" GridPane.columnSpan="9" GridPane.rowIndex="2"/>
+        <ScrollPane fx:id="gamescrollpane" hbarPolicy="NEVER" onKeyPressed="#handleKeyPress"
+                    onKeyReleased="#handleKeyReleased" prefHeight="200.0" prefWidth="200.0" styleClass="gamecontainer"
+                    vbarPolicy="NEVER" GridPane.columnSpan="9" GridPane.rowIndex="1" GridPane.rowSpan="3"/>
         <ToolBar prefHeight="40.0" prefWidth="200.0" GridPane.columnSpan="9" GridPane.valignment="TOP">
             <items>
                 <Button fx:id="chinois" mnemonicParsing="false" onAction="#chinoir" text="Button"/>
