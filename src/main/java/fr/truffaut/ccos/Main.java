@@ -1,6 +1,7 @@
 package fr.truffaut.ccos;
 
 
+import fr.truffaut.ccos.utils.Config;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,9 +16,10 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
+        System.out.println(Config.getPropertyOrDefault("ui.height"));
         primaryStage.setTitle("Arcade Menu");
-        primaryStage.setHeight(900);
-        primaryStage.setWidth(1440);
+        primaryStage.setHeight(Integer.valueOf(Config.getPropertyOrDefault("ui.height")));
+        primaryStage.setWidth(Integer.valueOf(Config.getPropertyOrDefault("ui.width")));
         primaryStage.setResizable(true);
         primaryStage.setFullScreen(false);
 

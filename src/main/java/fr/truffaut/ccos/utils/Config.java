@@ -28,7 +28,9 @@ public class Config {
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
     @Getter
-    private JsonObject rootJson, defaultJson;
+    private static JsonObject rootJson;
+    @Getter
+    private static JsonObject defaultJson;
 
     /**
      * Initiate configuration (parse JSON, copy from source if needed, etc...)
@@ -65,7 +67,8 @@ public class Config {
      * @return The JsonElement if found
      */
     @Nullable
-    private JsonElement getRawProperty(String key) {
+    private static JsonElement getRawProperty(String key) {
+        if(rootJson == null || defaultJson == null) new Config();
         return rootJson.get(key);
     }
 
@@ -76,16 +79,16 @@ public class Config {
      * @return The JsonElement if found
      */
     @Nullable
-    private JsonElement getRawDefaultProperty(String key) {
+    private static JsonElement getRawDefaultProperty(String key) {
         return defaultJson.get(key);
     }
 
-    public Optional<String> getProperty(@NotNull String key) {
+    public static Optional<String> getProperty(@NotNull String key) {
         JsonElement element = getRawProperty(key);
         return Optional.ofNullable(element == null ? null : element.getAsString());
     }
 
-    public String getPropertyOrDefault(@NotNull String key) {
+    public static String getPropertyOrDefault(@NotNull String key) {
         Optional<String> optional = getProperty(key);
         return optional.orElseGet(() -> Objects.requireNonNull(getRawDefaultProperty(key)).getAsString());
     }
