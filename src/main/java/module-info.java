@@ -18,4 +18,6 @@ module CCOS {
     requires lombok;
 
     exports fr.truffaut.ccos;
+    exports fr.truffaut.ccos.ui;
+    exports fr.truffaut.ccos.utils;
 }
