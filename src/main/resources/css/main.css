@@ -1,3 +1,9 @@
-.root {
-    -fx-background-color: #2C2F33;
+.gamecontainer {
+    -fx-background-color: #cccccc;
+    -fx-background-radius: 15px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);
+}
+
+.firstgame {
+    -fx-background-color: #fff;
 }
