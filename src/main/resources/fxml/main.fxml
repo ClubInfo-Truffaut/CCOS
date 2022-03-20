@@ -30,7 +30,7 @@
                     GridPane.columnSpan="9" GridPane.rowIndex="1" GridPane.rowSpan="3"/>
         <ToolBar prefHeight="40.0" prefWidth="200.0" GridPane.columnSpan="9" GridPane.valignment="TOP">
             <items>
-                <Button fx:id="chinois" mnemonicParsing="false" onAction="#chinoir" text="Button"/>
+                <Button mnemonicParsing="false" text="Button"/>
             </items>
         </ToolBar>
         <ToolBar prefHeight="40.0" prefWidth="200.0" GridPane.columnSpan="9" GridPane.rowIndex="4"

@@ -7,13 +7,17 @@ public class GamesModel {
     @Getter
     @Setter
     private String name;
+    @Getter
+    @Setter
+    private String imagePath;
 
     @Getter
     @Setter
-    private String path;
+    private String romPath;
 
-    public GamesModel(String name, String path) {
+    public GamesModel(String name, String imagePath, String romPath) {
         this.name = name;
-        this.path = path;
+        this.imagePath = imagePath;
+        this.romPath = romPath;
     }
 }

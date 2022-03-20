@@ -1,11 +1,14 @@
 package fr.truffaut.ccos.utils;
 
 enum AppScenes {
-    STARTUP,
-    MAIN_MENU,
-    PARAMETERS,
-    GAME_LAUNCHING,
-    ADMIN_PANEL
+    STARTUP("/fxml/startup.fxml"),
+    MAIN_MENU("/fxml/startup.fxml"),
+    PARAMETERS("/fxml/parameters.fxml"),
+    GAME_LAUNCHING("/fxml/launchingGame.fxml"),
+    ADMIN_PANEL("/fxml/admin.fxml");
+
+    AppScenes(String s) {
+    }
 }
 
 public class SceneManager {

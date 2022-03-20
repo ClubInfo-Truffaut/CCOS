@@ -7,10 +7,8 @@ import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.animation.Transition;
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.input.KeyEvent;
 import javafx.util.Duration;
@@ -19,8 +17,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
-    @FXML
-    public Button chinois;
     @FXML
     public ScrollPane gamescrollpane;
 
@@ -62,32 +58,20 @@ public class MainController implements Initializable {
 
             @Override
             protected void interpolate(double v) {
-                if (gamescrollpane.getHvalue() == 0) {
+                if(gamescrollpane.getHvalue() == 0) {
                     fullright.play();
                 }
                 gamescrollpane.setHvalue(gamescrollpane.getHvalue() - 0.01);
             }
         };
-        Platform.runLater(() -> {
-            new GameContainer(gamescrollpane);
-        });
-    }
-
-
-    @FXML
-    public void chinoir(ActionEvent actionEvent) {
-        System.out.println("mange ta mère");
+        Platform.runLater(() -> new GameContainer(gamescrollpane));
     }
 
     @FXML
     public void handleKeyPress(KeyEvent keyEvent) {
-        switch (keyEvent.getCode()) {
-            case RIGHT:
-                right.play();
-                break;
-            case LEFT:
-                left.play();
-                break;
+        switch(keyEvent.getCode()) {
+            case RIGHT -> right.play();
+            case LEFT -> left.play();
         }
     }
 
