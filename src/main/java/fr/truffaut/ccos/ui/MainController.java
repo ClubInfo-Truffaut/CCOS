@@ -15,7 +15,6 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.input.KeyEvent;
 import javafx.util.Duration;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -70,11 +69,7 @@ public class MainController implements Initializable {
             }
         };
         Platform.runLater(() -> {
-            try {
-                new GameContainer(gamescrollpane);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            new GameContainer(gamescrollpane);
         });
     }
 

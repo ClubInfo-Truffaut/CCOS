@@ -3,3 +3,14 @@
     -fx-background-radius: 15px;
     -fx-background-color: transparent;
 }
+
+#gamebuttons {
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 10, 0.5, 10, 10);
+}
+
+#gamebuttons:hover {
+    -fx-border-radius: 5px;
+    -fx-border-color: rgb(52, 52, 52);
+    -fx-border-width: 5px;
+    -fx-border-insets: -3px;
+}
