@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.layout.*?>
-<GridPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-          minWidth="-Infinity" prefHeight="900.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/17"
-          fx:controller="fr.truffaut.ccos.ui.MainController">
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<GridPane xmlns:fx="http://javafx.com/fxml/1" id="gridpane" maxHeight="-Infinity" maxWidth="-Infinity"
+          minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1440.0"
+          xmlns="http://javafx.com/javafx/17" fx:controller="fr.truffaut.ccos.ui.MainController">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
@@ -24,20 +30,81 @@
         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
     </rowConstraints>
     <children>
-        <ScrollPane fx:id="gamescrollpane" accessibleRole="BUTTON" cache="true" hbarPolicy="NEVER"
+        <ScrollPane fx:id="gamescrollpane" cache="true" hbarPolicy="NEVER" maxHeight="540.0" maxWidth="1440.0"
                     onKeyPressed="#handleKeyPress" onKeyReleased="#handleKeyReleased" pickOnBounds="false"
                     prefHeight="200.0" prefWidth="200.0" styleClass="gamecontainer" vbarPolicy="NEVER"
                     GridPane.columnSpan="9" GridPane.rowIndex="1" GridPane.rowSpan="3"/>
-        <ToolBar prefHeight="40.0" prefWidth="200.0" GridPane.columnSpan="9" GridPane.valignment="TOP">
-            <items>
-                <Button mnemonicParsing="false" text="Button"/>
-            </items>
+        <BorderPane cacheShape="false" centerShape="false" disable="true" maxHeight="540.0" maxWidth="1440.0"
+                    prefHeight="200.0" prefWidth="200.0" scaleShape="false" GridPane.columnSpan="9"
+                    GridPane.rowIndex="1" GridPane.rowSpan="3">
+            <left>
+                <Rectangle id="gradleft" arcHeight="5.0" arcWidth="5.0" height="540.0" stroke="TRANSPARENT"
+                           strokeType="INSIDE" strokeWidth="0.0" width="200.0" BorderPane.alignment="CENTER">
+                    <fill>
+                        <LinearGradient endX="1.0" endY="0.4881516587677725" startX="0.4075829383886256"
+                                        startY="0.4928909952606635">
+                            <stops>
+                                <Stop>
+                                    <color>
+                                        <Color red="0.8666666746139526" green="0.8666666746139526"
+                                               blue="0.8666666746139526"/>
+                                    </color>
+                                </Stop>
+                                <Stop offset="1.0">
+                                    <color>
+                                        <Color red="1.0" green="1.0" blue="1.0" opacity="0.0"/>
+                                    </color>
+                                </Stop>
+                            </stops>
+                        </LinearGradient>
+                    </fill>
+                </Rectangle>
+            </left>
+            <right>
+                <Rectangle id="gradright" arcHeight="5.0" arcWidth="5.0" height="540.0" stroke="TRANSPARENT"
+                           strokeType="INSIDE" strokeWidth="0.0" width="200.0" BorderPane.alignment="CENTER">
+                    <fill>
+                        <LinearGradient endX="0.6540284360189574" endY="0.4976303317535544" startY="0.4976303317535544">
+                            <stops>
+                                <Stop>
+                                    <color>
+                                        <Color red="1.0" green="1.0" blue="1.0" opacity="0.0"/>
+                                    </color>
+                                </Stop>
+                                <Stop offset="0.007662835249042145">
+                                    <color>
+                                        <Color red="1.0" green="1.0" blue="1.0" opacity="0.0"/>
+                                    </color>
+                                </Stop>
+                                <Stop offset="1.0">
+                                    <color>
+                                        <Color red="0.8666666746139526" green="0.8666666746139526"
+                                               blue="0.8666666746139526"/>
+                                    </color>
+                                </Stop>
+                            </stops>
+                        </LinearGradient>
+                    </fill>
+                </Rectangle>
+            </right>
+            <cursor>
+                <Cursor fx:constant="NONE"/>
+            </cursor>
+        </BorderPane>
+        <ToolBar id="toolup" fx:id="toolbarup" nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0"
+                 GridPane.columnSpan="9" GridPane.halignment="LEFT" GridPane.valignment="TOP">
         </ToolBar>
-        <ToolBar prefHeight="40.0" prefWidth="200.0" GridPane.columnSpan="9" GridPane.rowIndex="4"
-                 GridPane.valignment="BOTTOM">
-            <items>
-                <Button mnemonicParsing="false" text="Button"/>
-            </items>
-        </ToolBar>
+        <BorderPane mouseTransparent="true" GridPane.columnSpan="9" GridPane.rowIndex="4" GridPane.rowSpan="5">
+            <center>
+                <Line endX="1098.2928466796875" endY="0.00431901216506958" startX="-100.0"
+                      BorderPane.alignment="BASELINE_CENTER">
+                    <BorderPane.margin>
+                        <Insets bottom="100.0"/>
+                    </BorderPane.margin>
+                </Line>
+            </center>
+        </BorderPane>
+        <ToolBar id="tooldown" prefHeight="40.0" prefWidth="200.0" GridPane.columnSpan="9" GridPane.rowIndex="4"
+                 GridPane.valignment="BOTTOM"/>
     </children>
 </GridPane>

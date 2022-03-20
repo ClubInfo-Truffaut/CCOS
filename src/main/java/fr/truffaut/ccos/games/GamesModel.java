@@ -1,19 +1,14 @@
 package fr.truffaut.ccos.games;
 
 import lombok.Getter;
-import lombok.Setter;
 
 public class GamesModel {
     @Getter
-    @Setter
-    private String name;
+    public String name;
     @Getter
-    @Setter
-    private String imagePath;
-
+    public String imagePath;
     @Getter
-    @Setter
-    private String romPath;
+    public String romPath;
 
     public GamesModel(String name, String imagePath, String romPath) {
         this.name = name;
