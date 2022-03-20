@@ -20,4 +20,5 @@ module CCOS {
     exports fr.truffaut.ccos;
     exports fr.truffaut.ccos.ui;
     exports fr.truffaut.ccos.utils;
+    exports fr.truffaut.ccos.games;
 }

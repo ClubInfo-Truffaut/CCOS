@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<GridPane xmlns:fx="http://javafx.com/fxml/1" gridLinesVisible="true" maxHeight="-Infinity" maxWidth="-Infinity"
+          minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1440.0"
+          style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/17">
+    <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+    </rowConstraints>
+    <children>
+        <Text fill="WHITE" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Financé par la MDL"
+              textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2"
+              GridPane.valignment="BOTTOM">
+            <font>
+                <Font name="Tahoma" size="24.0"/>
+            </font>
+        </Text>
+        <ProgressIndicator minHeight="-Infinity" minWidth="-Infinity" prefHeight="96.0" prefWidth="96.0"
+                           style="-fx-progress-color: white;" styleClass="loadingCircle" GridPane.columnIndex="1"
+                           GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+            <effect>
+                <Glow level="0.1"/>
+            </effect>
+        </ProgressIndicator>
+        <TextArea fx:id="LoadTextBox" cache="true" editable="false" focusTraversable="false" prefHeight="200.0"
+                  prefWidth="200.0" style="-fx-background-color: black;" GridPane.columnSpan="3" GridPane.rowIndex="3">
+            <font>
+                <Font name="Source Code Pro" size="12.0"/>
+            </font>
+            <opaqueInsets>
+                <Insets/>
+            </opaqueInsets>
+        </TextArea>
+        <ImageView fitHeight="320.0" fitWidth="320.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1"
+                   GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+            <image>
+                <Image url="@../images/lycee_logo.png"/>
+            </image>
+            <effect>
+                <Glow/>
+            </effect>
+        </ImageView>
+    </children>
+</GridPane>
