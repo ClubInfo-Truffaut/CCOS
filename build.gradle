@@ -46,6 +46,9 @@ version '1.0-SNAPSHOT'
 
 dependencies {
     implementation 'org.projectlombok:lombok:1.18.22'
+    compileOnly 'org.projectlombok:lombok:1.18.22'
+    annotationProcessor 'org.projectlombok:lombok:1.18.22'
+
     implementation 'org.realityforge.org.jetbrains.annotations:org.jetbrains.annotations:1.7.0'
     implementation 'com.google.code.gson:gson:2.9.0'
 
