@@ -31,6 +31,7 @@ public class GameContainer {
     }
 
     private Pane pane(Path imgpath) {
+        System.out.println(imgpath);
         Pane pane = new Pane();
         Rectangle rectangle = new Rectangle();
         BackgroundImage backgroundImage = new BackgroundImage(new Image(imgpath.toAbsolutePath().toString(), 250, 384, false, true), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
@@ -79,7 +80,7 @@ public class GameContainer {
         return text;
     }
 
-    private void Creator(String name, Path imgpath) throws IOException {
+    private void Creator(String name, Path imgpath, Path rompath) throws IOException {
         Pane pane = pane(imgpath);
         Text text = text(name);
         VBox vBox = new VBox();
@@ -89,17 +90,25 @@ public class GameContainer {
         listPane.add(vBox);
     }
 
+    private void createFakeBox() {
+        Pane pane = new Pane();
+        pane.setMaxHeight(384);
+        pane.setMinHeight(384);
+        pane.setMaxWidth(384);
+        pane.setMinWidth(384);
+        listPane.add(pane);
+    }
+
     public void init() {
+        createFakeBox();
         Main.gamesList.forEach(game -> {
             try {
-                Creator(game.getName(), Path.of(game.getImagePath())); //game.getRomPath()
-                Creator(game.getName(), Path.of(game.getImagePath())); //game.getRomPath()
-                Creator(game.getName(), Path.of(game.getImagePath())); //game.getRomPath()
-                Creator(game.getName(), Path.of(game.getImagePath())); //game.getRomPath()
+                Creator(game.getName(), Path.of(game.getImagePath()), Path.of(game.getRomPath())); //
             } catch (IOException e) {
                 e.printStackTrace();
             }
         });
+        createFakeBox();
         HBox hbox = new HBox();
         hbox.setAlignment(Pos.CENTER);
         hbox.setSpacing(50);

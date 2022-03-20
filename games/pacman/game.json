@@ -1,5 +1,5 @@
 {
   "name": "PacMan",
-  "imagePath": "games/b/game.jpg",
+  "imagePath": "games/pacman/game.jpg",
   "romPath": "bbdffdfdff"
 }

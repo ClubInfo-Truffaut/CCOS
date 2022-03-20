@@ -68,7 +68,7 @@ public class MainController implements Initializable {
                 if (gamescrollpane.getHvalue() == 1) {
                     fullleft.play();
                 }
-                gamescrollpane.setHvalue(gamescrollpane.getHvalue() + 0.02);
+                gamescrollpane.setHvalue(gamescrollpane.getHvalue() + 0.01);
             }
         };
         this.left = new Transition() {
@@ -82,7 +82,7 @@ public class MainController implements Initializable {
                 if (gamescrollpane.getHvalue() == 0) {
                     fullright.play();
                 }
-                gamescrollpane.setHvalue(gamescrollpane.getHvalue() - 0.02);
+                gamescrollpane.setHvalue(gamescrollpane.getHvalue() - 0.01);
             }
         };
     }
