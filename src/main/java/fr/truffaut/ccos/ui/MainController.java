@@ -1,8 +1,11 @@
 package fr.truffaut.ccos.ui;
 
+import animatefx.animation.AnimateFXInterpolator;
+import animatefx.animation.FadeIn;
+import animatefx.animation.SlideInLeft;
+import fr.truffaut.ccos.Main;
 import fr.truffaut.ccos.ui.manager.GameContainer;
 import fr.truffaut.ccos.utils.Config;
-import fr.truffaut.ccos.utils.InterpolatorCustom;
 import javafx.animation.*;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -10,7 +13,10 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.ToolBar;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
@@ -27,6 +33,7 @@ public class MainController implements Initializable {
     public ScrollPane gamescrollpane;
     @FXML
     public ToolBar toolbarup;
+    public GridPane gridpane;
 
     private Transition right;
     private Transition left;
@@ -43,24 +50,28 @@ public class MainController implements Initializable {
             initTimeline();
             hBox.getChildren().add(initClock());
             hBox.getChildren().add(initVersion());
+            gridpane.add(initLogo(), 8, 4);
             toolbarup.getItems().add(hBox);
             new GameContainer(gamescrollpane);
+            gamescrollpane.setHvalue(-1);
         });
     }
 
     private void initTimeline() {
+        System.out.println((double) 1 / 100);
         this.fullright = new Timeline(
                 new KeyFrame(Duration.seconds(0.5),
-                        new KeyValue(gamescrollpane.hvalueProperty(), 1, InterpolatorCustom.EASE_05)
+                        new KeyValue(gamescrollpane.hvalueProperty(), 1, AnimateFXInterpolator.EASE)
                 ));
         this.fullleft = new Timeline(
                 new KeyFrame(Duration.seconds(0.5),
-                        new KeyValue(gamescrollpane.hvalueProperty(), 0, InterpolatorCustom.EASE_05)
+                        new KeyValue(gamescrollpane.hvalueProperty(), 0, AnimateFXInterpolator.EASE)
                 ));
+
         this.right = new Transition() {
             {
                 setCycleDuration(Duration.INDEFINITE);
-                setInterpolator(InterpolatorCustom.EASE_05);
+                setInterpolator(AnimateFXInterpolator.EASE);
             }
 
             @Override
@@ -68,13 +79,14 @@ public class MainController implements Initializable {
                 if (gamescrollpane.getHvalue() == 1) {
                     fullleft.play();
                 }
-                gamescrollpane.setHvalue(gamescrollpane.getHvalue() + 0.01);
+                gamescrollpane.setHvalue(gamescrollpane.getHvalue() + (double) 1 / (Main.gamesList.size() * 10));
+
             }
         };
         this.left = new Transition() {
             {
                 setCycleDuration(Duration.INDEFINITE);
-                setInterpolator(InterpolatorCustom.EASE_05);
+                setInterpolator(AnimateFXInterpolator.EASE);
             }
 
             @Override
@@ -82,14 +94,26 @@ public class MainController implements Initializable {
                 if (gamescrollpane.getHvalue() == 0) {
                     fullright.play();
                 }
-                gamescrollpane.setHvalue(gamescrollpane.getHvalue() - 0.01);
+                gamescrollpane.setHvalue(gamescrollpane.getHvalue() - (double) 1 / (Main.gamesList.size() * 10));
             }
         };
+    }
+
+    private ImageView initLogo() {
+        Image image = new Image(getClass().getResource("/img/logo.png").toExternalForm());
+        ImageView imageView = new ImageView(image);
+        imageView.setFitWidth(100);
+        imageView.setFitHeight(141);
+        imageView.setLayoutY(-100);
+        return imageView;
     }
 
     private Text initVersion() {
         Text text = new Text(Config.getProperty("version").get());
         text.setFont(Font.loadFont(Objects.requireNonNull(getClass().getResource("/fontr.ttf")).toExternalForm(), 20));
+        text.setOpacity(0);
+        new FadeIn(text).play();
+        new SlideInLeft(text).play();
         return text;
     }
 
@@ -97,10 +121,10 @@ public class MainController implements Initializable {
         SimpleDateFormat time = new SimpleDateFormat("HH:mm:ss");
         final Text clock = new Text(time.format(new Date()));
         final Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1),
-                event -> {
-                    clock.setText(time.format(new Date()));
-                }));
-
+                event -> clock.setText(time.format(new Date()))));
+        clock.setOpacity(0);
+        new FadeIn(clock).setDelay(Duration.seconds(1)).play();
+        new SlideInLeft(clock).setDelay(Duration.seconds(1)).play();
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
 

@@ -16,6 +16,7 @@ module CCOS {
     requires org.slf4j;
     requires org.jetbrains.annotations;
     requires lombok;
+    requires AnimateFX;
 
     exports fr.truffaut.ccos;
     exports fr.truffaut.ccos.ui;

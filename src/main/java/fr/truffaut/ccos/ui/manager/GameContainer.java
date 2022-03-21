@@ -1,7 +1,7 @@
 package fr.truffaut.ccos.ui.manager;
 
+import animatefx.animation.AnimateFXInterpolator;
 import fr.truffaut.ccos.Main;
-import fr.truffaut.ccos.utils.InterpolatorCustom;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -52,17 +52,17 @@ public class GameContainer {
         pane.setVisible(true);
         pane.setOnMouseEntered(mouseEvent -> {
             Timeline zoomIn = new Timeline(
-                    new KeyFrame(Duration.seconds(0.05),
-                            new KeyValue(pane.scaleXProperty(), 1.05, InterpolatorCustom.EASE_IN),
-                            new KeyValue(pane.scaleYProperty(), 1.05, InterpolatorCustom.EASE_IN)
+                    new KeyFrame(Duration.seconds(0.3),
+                            new KeyValue(pane.scaleXProperty(), 1.05, AnimateFXInterpolator.EASE),
+                            new KeyValue(pane.scaleYProperty(), 1.05, AnimateFXInterpolator.EASE)
                     ));
             zoomIn.play();
         });
         pane.setOnMouseExited(mouseEvent -> {
             Timeline zoomOut = new Timeline(
-                    new KeyFrame(Duration.seconds(0.05),
-                            new KeyValue(pane.scaleXProperty(), 1, InterpolatorCustom.EASE_OUT),
-                            new KeyValue(pane.scaleYProperty(), 1, InterpolatorCustom.EASE_OUT)
+                    new KeyFrame(Duration.seconds(0.3),
+                            new KeyValue(pane.scaleXProperty(), 1, AnimateFXInterpolator.EASE),
+                            new KeyValue(pane.scaleYProperty(), 1, AnimateFXInterpolator.EASE)
                     ));
             zoomOut.play();
         });
@@ -94,8 +94,8 @@ public class GameContainer {
         Pane pane = new Pane();
         pane.setMaxHeight(384);
         pane.setMinHeight(384);
-        pane.setMaxWidth(384);
-        pane.setMinWidth(384);
+        pane.setMaxWidth(528);
+        pane.setMinWidth(528);
         listPane.add(pane);
     }
 
@@ -103,7 +103,7 @@ public class GameContainer {
         createFakeBox();
         Main.gamesList.forEach(game -> {
             try {
-                Creator(game.getName(), Path.of(game.getImagePath()), Path.of(game.getRomPath())); //
+                Creator(game.getName(), Path.of(game.getImagePath()), Path.of(game.getRomPath()));
             } catch (IOException e) {
                 e.printStackTrace();
             }
