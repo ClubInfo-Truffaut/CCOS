@@ -32,14 +32,14 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws IOException {
         startup();
         primaryStage.setTitle("Arcade Menu");
-        primaryStage.setHeight(900);
-        primaryStage.setWidth(1440);
+        primaryStage.setHeight(763);
+        primaryStage.setWidth(1366);
         primaryStage.setResizable(true);
         primaryStage.setFullScreen(false);
 
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/main.fxml")));
         Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("/css/main.css").toExternalForm());
+        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/main.css")).toExternalForm());
         scene.getRoot().setOpacity(0);
         primaryStage.setScene(scene);
         primaryStage.show();

@@ -104,6 +104,7 @@ public class GameContainer {
         Main.gamesList.forEach(game -> {
             try {
                 Creator(game.getName(), Path.of(game.getImagePath()), Path.of(game.getRomPath()));
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
