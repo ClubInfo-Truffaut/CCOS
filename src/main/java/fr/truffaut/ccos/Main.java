@@ -32,8 +32,8 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws IOException {
         startup();
         primaryStage.setTitle("Arcade Menu");
-        primaryStage.setHeight(763);
-        primaryStage.setWidth(1366);
+        primaryStage.setHeight(900);
+        primaryStage.setWidth(1440);
         primaryStage.setResizable(true);
         primaryStage.setFullScreen(false);
 
