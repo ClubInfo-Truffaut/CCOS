@@ -3,6 +3,7 @@ package fr.truffaut.ccos;
 
 import com.google.gson.Gson;
 import fr.truffaut.ccos.games.GamesModel;
+import fr.truffaut.ccos.utils.Config;
 import fr.truffaut.ccos.utils.InterpolatorCustom;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -32,8 +33,8 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws IOException {
         startup();
         primaryStage.setTitle("Arcade Menu");
-        primaryStage.setHeight(900);
-        primaryStage.setWidth(1440);
+        primaryStage.setHeight(Double.parseDouble(Config.getPropertyOrDefault("ui.height")));
+        primaryStage.setWidth(Double.parseDouble(Config.getPropertyOrDefault("ui.width")));
         primaryStage.setResizable(true);
         primaryStage.setFullScreen(false);
 
